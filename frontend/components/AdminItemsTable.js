@@ -49,7 +49,7 @@ export default function AdminItemsTable({ registry }) {
 
   // deletes item and updates our cache
   const handleDeletion = id => {
-    mutate("/registry/admin", async items => {
+    mutate(["/registry/admin", accessToken], async items => {
       try {
         await adminFetchIt(`/item/${id}/registry/${registryId}`, accessToken, {
           method: "DELETE",
