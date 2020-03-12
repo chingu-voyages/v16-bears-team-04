@@ -1,6 +1,6 @@
 import React from "react";
 import AdminPage from "../../../components/AdminPage";
-import EditItem from "../../../components/EditItem";
+import CreateItem from "../../../components/CreateItem";
 import GiftIcon from "@iconscout/react-unicons/icons/uil-gift";
 
 const CreateItemPage = () => {
@@ -13,7 +13,7 @@ const CreateItemPage = () => {
             {!registry ? (
               <div>Loading...</div>
             ) : (
-              <EditItem registry={registry} />
+              <CreateItem registry={registry} />
             )}
           </AdminPage.Main>
         </>

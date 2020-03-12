@@ -8,10 +8,12 @@ import PropTypes from "prop-types";
 import { useAuth } from "use-auth0-hooks";
 import { registryType } from "../types";
 import Link from "./Link";
+import { useRouter } from "next/router";
 
 const audience = AUTH0_API_IDENTIFIER;
 
-const EditItem = ({ registry }) => {
+const CreateItem = ({ registry }) => {
+  const router = useRouter();
   const { _id } = registry;
   const registryId = _id;
   const { accessToken } = useAuth({ audience });
@@ -21,6 +23,7 @@ const EditItem = ({ registry }) => {
       method: "POST",
       body: JSON.stringify(formData),
     });
+    router.push("/admin/gifts");
     /*mutate("/registry/admin", async items => {
       const newItem = await adminFetchIt(
         `/item/registry/${registryId}`,
@@ -78,8 +81,8 @@ const EditItem = ({ registry }) => {
   );
 };
 
-export default EditItem;
+export default CreateItem;
 
-EditItem.propTypes = {
+CreateItem.propTypes = {
   registry: PropTypes.shape(registryType),
 };
